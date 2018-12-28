@@ -1,0 +1,62 @@
+{
+    // Editor
+    "editor.wordWrap": "on",
+    "editor.smoothScrolling": true,
+    "editor.minimap.enabled": false,
+    "editor.formatOnPaste": true,
+    "editor.fontLigatures": true,
+    "breadcrumbs.enabled": true,
+    "explorer.confirmDragAndDrop": false,
+    "window.zoomLevel": 0,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+
+    // Files
+    "files.associations": {
+        ".gitignore_global": "ignore"
+    },
+    "files.exclude": {
+        "**/*.pyc": true
+    },
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+
+    // Search
+    "search.exclude": {
+        "**/yarn.lock": true,
+        "**/package-lock.json": true
+    },
+
+    // Git
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.autofetch": true,
+
+    // Terminal
+    "terminal.explorerKind": "external",
+    "terminal.external.windowsExec": "C:\\Program Files\\PowerShell\\6\\pwsh.exe",
+    "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\6\\pwsh.exe",
+
+    // Prettier
+    "prettier.singleQuote": true,
+    "prettier.tabWidth": 4,
+
+    // JSON
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "**/*.webmanifest"
+            ],
+            "url": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/web-manifest.json"
+        }
+    ],
+
+    // Spelling
+    "cSpell.userWords": [
+        "Oakes",
+        "polyfill",
+        "iife",
+        "sourcemap",
+        "tigeroakes"
+    ],
+}
