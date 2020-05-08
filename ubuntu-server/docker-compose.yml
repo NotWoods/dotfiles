@@ -1,0 +1,51 @@
+version: "3.7"
+services:
+
+  # Proxy localhost websites on different ports to one single site
+  caddy:
+    image: caddy
+    restart: always
+    network_mode: host
+    volumes:
+      - "~/.caddy/Caddyfile:/etc/caddy/Caddyfile"
+      - "~/.caddy/data:/data"
+      - "~/.caddy/config:/config"
+
+  # Share media
+  plex:
+    image: plexinc/pms-docker
+    restart: always
+    container_name: plex
+    network_mode: host
+    environment:
+      TZ: "America/Vancouver"
+      # PLEX_CLAIM: "<claimToken>"
+    volumes:
+      - "~/.plex/config:/config"
+      - "~/.plex/transcode:/transcode"
+      - "/media/passport/Media:/data"
+
+  # WebThings
+  webthings:
+    image: mozillaiot/gateway
+    restart: always
+    container_name: webthings-gateway
+    network_mode: host
+    environment:
+      TZ: "America/Vancouver"
+    volumes:
+      - "~/.mozilla-iot:/home/node/.mozilla-iot"
+    logging:
+      options:
+        max-size: "1m"
+        max-file: "10"
+
+  # IRC
+  thelounge:
+    image: thelounge/thelounge
+    restart: always
+    container_name: thelounge
+    ports:
+      - "9000:9000"
+    volumes:
+      - "~/.thelounge:/var/opt/thelounge"
