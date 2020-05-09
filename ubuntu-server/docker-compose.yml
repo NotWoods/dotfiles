@@ -5,9 +5,10 @@ services:
   caddy:
     image: caddy
     restart: always
+    container_name: caddy
     network_mode: host
     volumes:
-      - "~/.caddy/Caddyfile:/etc/caddy/Caddyfile"
+      - "/home/tiger/.caddy/Caddyfile:/etc/caddy/Caddyfile"
       - "~/.caddy/data:/data"
       - "~/.caddy/config:/config"
 
@@ -25,6 +26,18 @@ services:
       - "~/.plex/transcode:/transcode"
       - "/media/passport/Media:/data"
 
+  # Plex voice interface
+  flextv:
+    image: digitalhigh/flextv
+    container_name: flextv
+    restart: always
+    environment:
+      TZ: "America/Vancouver"
+    ports:
+      - "32200:80"
+    volumes:
+      - "~/.plex/flextv:/config"
+
   # WebThings
   webthings:
     image: mozillaiot/gateway
@@ -40,12 +53,38 @@ services:
         max-size: "1m"
         max-file: "10"
 
-  # IRC
-  thelounge:
-    image: thelounge/thelounge
+  # Book storage
+  calibre:
+    image: linuxserver/calibre
     restart: always
-    container_name: thelounge
-    ports:
-      - "9000:9000"
+    container_name: calibre
+    environment:
+      TZ: "America/Vancouver"
     volumes:
-      - "~/.thelounge:/var/opt/thelounge"
+      - "~/.calibre/config:/config"
+      - "/media/passport/Books:/Calibre_Library"
+    ports:
+      - "27880:8080"
+      - "27881:8081"
+
+  # Book access
+  calibreweb:
+    image: linuxserver/calibre-web
+    restart: always
+    container_name: calibre-web
+    environment:
+      TZ: "America/Vancouver"
+      DOCKER_MODS: "linuxserver/calibre-web:calibre"
+    volumes:
+      - "~/.calibre/webconfig:/config"
+      - "/media/passport/Books:/books"
+    ports:
+      - "27883:8083"
+
+  # FTP
+  filestash:
+    container_name: filestash
+    image: machines/filestash
+    restart: always
+    ports:
+      - "8334:8334"

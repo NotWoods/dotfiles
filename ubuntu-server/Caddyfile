@@ -3,12 +3,12 @@ localhost {
   respond "Hello, world!"
 }
 
-chat.tigeroakes.com {
+#chat.tigeroakes.com {
   # The Lounge
-  reverse_proxy 127.0.0.1:9000
-}
+#  reverse_proxy 127.0.0.1:9000
+#}
 
-home.tigeroakes.com {
+#home.tigeroakes.com {
   # TODO Home Assistant
-  reverse_proxy 127.0.0.1:9000
-}
+#  reverse_proxy 127.0.0.1:9000
+#}
