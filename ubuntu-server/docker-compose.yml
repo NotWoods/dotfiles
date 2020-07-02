@@ -12,6 +12,16 @@ services:
       - "~/.caddy/data:/data"
       - "~/.caddy/config:/config"
 
+  # Dashboard
+  homer:
+    image: b4bz/homer
+    restart: always
+    container_name: homer
+    ports:
+      - "8080:8080"
+    volumes:
+      - "~/.homer/assets/:/www/assets"
+
   # Share media
   plex:
     image: plexinc/pms-docker
@@ -80,6 +90,20 @@ services:
       - "/media/passport/Books:/books"
     ports:
       - "27883:8083"
+
+  # Comics
+  komga:
+    image: gotson/komga
+    restart: always
+    container_name: komga
+    environment:
+      TZ: "America/Vancouver"
+      SPRING_PROFILES_ACTIVE: "claim"
+    volumes:
+      - "~/.komga/config:/config"
+      - "/media/passport/Comics:/books"
+    ports:
+      - "27885:8080"
 
   # FTP
   filestash:

@@ -3,12 +3,29 @@ localhost {
   respond "Hello, world!"
 }
 
-#chat.tigeroakes.com {
-  # The Lounge
-#  reverse_proxy 127.0.0.1:9000
-#}
+(robots) {
+  respond /robots.txt 200 {
+    body "User-agent: *\nDisallow: /"
+    close
+  }
+}
 
-#home.tigeroakes.com {
-  # TODO Home Assistant
-#  reverse_proxy 127.0.0.1:9000
-#}
+home2.tigeroakes.com {
+  # Home Assistant
+  reverse_proxy localhost:8123
+  tls {
+    alpn http/1.1
+  }
+}
+
+books.home.tigeroakes.com {
+  # Calibre Web
+  import robots
+  reverse_proxy localhost:27883
+}
+
+comics.home.tigeroakes.com {
+  # Komga
+  import robots
+  reverse_proxy localhost:27885
+}
