@@ -18,9 +18,9 @@ services:
     restart: always
     container_name: homer
     ports:
-      - "8080:8080"
+      - "8008:8080"
     volumes:
-      - "~/.homer/assets/:/www/assets"
+      - "/home/tiger/.homer:/www/assets"
 
   # Share media
   plex:
