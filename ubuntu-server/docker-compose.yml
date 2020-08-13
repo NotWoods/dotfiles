@@ -105,6 +105,21 @@ services:
     ports:
       - "27885:8080"
 
+  youtubedl:
+    container_name: youtubedl
+    image: tzahi12345/youtubedl-material
+    restart: always
+    environment:
+      ALLOW_CONFIG_MUTATIONS: 'true'
+    volumes:
+      - ~/.youtubedl/appdata:/app/appdata
+      - ~/.youtubedl/audio:/app/audio
+      - ~/.youtubedl/video:/app/video
+      - ~/.youtubedl/subscriptions:/app/subscriptions
+      - ~/.youtubedl/users:/app/users
+    ports:
+      - "17442:17442"
+
   # FTP
   filestash:
     container_name: filestash
