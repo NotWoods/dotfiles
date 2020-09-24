@@ -127,3 +127,13 @@ services:
     restart: always
     ports:
       - "8334:8334"
+
+  # IRC
+  thelounge:
+    container_name: thelounge
+    image: thelounge/thelounge
+    restart: always
+    ports:
+      - "9000:9000"
+    volumes:
+      - ~/.thelounge:/var/opt/thelounge

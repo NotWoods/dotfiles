@@ -34,3 +34,8 @@ comics.home.tigeroakes.com {
   import robots
   reverse_proxy localhost:27885
 }
+
+chat.home.tigeroakes.com {
+  # The Lounge
+  reverse_proxy localhost:9000
+}

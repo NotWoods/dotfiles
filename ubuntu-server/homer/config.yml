@@ -95,6 +95,10 @@ services:
         logo: "https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"
         subtitle: "YouTube downloader"
         url: "http://<ipaddr>:17442"
+      - name: "The Lounge"
+        logo: "https://avatars2.githubusercontent.com/u/14336958"
+        subtitle: "IRC"
+        url: "https://chat.home.tigeroakes.com"
   - name: "Configuration"
     icon: "fas fa-server"
     items:
