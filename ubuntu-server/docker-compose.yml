@@ -137,3 +137,76 @@ services:
       - "9000:9000"
     volumes:
       - ~/.thelounge:/var/opt/thelounge
+
+  # Share files with Windows
+  samba:
+    container_name: samba
+    image: dperson/samba
+    restart: always
+    ports:
+      - "137:137/udp"
+      - "138:138/udp"
+      - "139:139/tcp"
+      - "445:445/tcp"
+    read_only: false
+    tmpfs:
+      - /tmp
+    stdin_open: true
+    tty: true
+    volumes:
+      - "/media/passport:/mount:z"
+    command: '-s "Media;/mount;yes;no" -u "tiger;dactylion" -p'
+
+  qbittorrent:
+    container_name: qbittorrent
+    image: linuxserver/qbittorrent
+    restart: always
+    environment:
+      - UMASK_SET=022
+      - WEBUI_PORT=27501
+    volumes:
+      - ~/.qbittorrent/config:/config
+      - /media/passport/Download:/downloads
+    ports:
+      - 6881:6881
+      - 6881:6881/udp
+      - 27501:27501
+
+  jackett:
+    image: linuxserver/jackett
+    container_name: jackett
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - ~/.jackett/config:/config
+      - /media/passport/Download:/downloads
+    ports:
+      - 9117:9117
+    restart: always
+    network_mode: host
+
+  sonarr:
+    image: linuxserver/sonarr
+    container_name: sonarr
+    volumes:
+      - ~/.sonarr/config:/config
+      - /media/passport/Media/TV:/tv
+      - /media/passport/Download:/downloads
+    ports:
+      - 8989:8989
+    restart: always
+    network_mode: host
+
+  radarr:
+    image: linuxserver/radarr
+    container_name: radarr
+    restart: always
+    volumes:
+      - ~/.radarr/config:/config
+      - /media/passport/Media/Movies:/tv
+      - /media/passport/Download:/downloads
+    ports:
+      - 7878:7878
+    network_mode: host
