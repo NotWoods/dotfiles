@@ -79,7 +79,11 @@ services:
       - name: "CellWall Controller"
         logo: "https://raw.githubusercontent.com/NotWoods/cell-wall/main/images/logo.png"
         subtitle: "Multi-device display controls"
-        url: "http://raspberrypi.local:3000/controller"
+        url: "http://raspberrypi.local:3000"
+      - name: "n8n"
+        logo: "https://pbs.twimg.com/profile_images/1262728426269683712/98F2kya-_400x400.png"
+        subtitle: "Free version of IFTTT"
+        url: "http://emerald.local:5678"
   - name: "Media"
     icon: "fas fa-compact-disc"
     items:
