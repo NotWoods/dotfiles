@@ -50,14 +50,14 @@ services:
 
   # WebThings
   webthings:
-    image: mozillaiot/gateway
+    image: webthingsio/gateway
     restart: always
     container_name: webthings-gateway
     network_mode: host
     environment:
       TZ: "America/Vancouver"
     volumes:
-      - "~/.mozilla-iot:/home/node/.mozilla-iot"
+      - "~/.mozilla-iot:/home/node/.webthings"
     logging:
       options:
         max-size: "1m"
@@ -89,7 +89,7 @@ services:
       - "~/.calibre/webconfig:/config"
       - "/media/passport/Books:/books"
     ports:
-      - "27883:8083"
+      - "8083:8083"
 
   # Comics
   komga:
@@ -172,21 +172,6 @@ services:
       - 6881:6881/udp
       - 27501:27501
 
-  jackett:
-    image: linuxserver/jackett
-    container_name: jackett
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/London
-    volumes:
-      - ~/.jackett/config:/config
-      - /media/passport/Download:/downloads
-    ports:
-      - 9117:9117
-    restart: always
-    network_mode: host
-
   sonarr:
     image: linuxserver/sonarr
     container_name: sonarr
@@ -210,3 +195,12 @@ services:
     ports:
       - 7878:7878
     network_mode: host
+
+  n8n:
+    image: n8nio/n8n
+    container_name: n8n
+    restart: always
+    volumes:
+      - ~/.n8n:/home/node/.n8n
+    ports:
+      - 5678:5678

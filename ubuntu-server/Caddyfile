@@ -26,7 +26,7 @@ home.tigeroakes.com, home2.tigeroakes.com {
 books.home.tigeroakes.com {
   # Calibre Web
   import robots
-  reverse_proxy localhost:27883
+  reverse_proxy localhost:8083
 }
 
 comics.home.tigeroakes.com {
@@ -38,4 +38,10 @@ comics.home.tigeroakes.com {
 chat.home.tigeroakes.com {
   # The Lounge
   reverse_proxy localhost:9000
+}
+
+cellwall.tigeroakes.com {
+  handle /oauth2callback {
+    reverse_proxy 192.168.50.252:3000
+  }
 }
