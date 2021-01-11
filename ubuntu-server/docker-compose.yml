@@ -196,11 +196,22 @@ services:
       - 7878:7878
     network_mode: host
 
-  n8n:
-    image: n8nio/n8n
-    container_name: n8n
+  nodered:
+    image: nodered/node-red
+    container_name: nodered
     restart: always
     volumes:
-      - ~/.n8n:/home/node/.n8n
+      - ~/.node-red:/data
     ports:
-      - 5678:5678
+      - 1880:1880
+    user: root:root
+
+  crewlink:
+    image: ottomated/crewlink-server
+    container_name: crewlink
+    restart: always
+    ports:
+      - 9736:9736
+    environment:
+      ADDRESS: amongus.tigeroakes.com
+      NAME: "Penguins"
