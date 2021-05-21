@@ -6,4 +6,4 @@ sudo apt update
 sudo apt install gh nano
 
 # code-server
-curl -fsSL https://code-server.dev/install.sh | sh -s -- --dry-run
+curl -fsSL https://code-server.dev/install.sh | sh
