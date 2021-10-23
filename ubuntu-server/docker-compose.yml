@@ -201,7 +201,11 @@ services:
     container_name: nodered
     restart: always
     volumes:
-      - ~/.node-red:/data
+      - /home/tiger/.node-red:/data
+    environment:
+      - TZ=America/Vancouver
+      - GITHUB_CLIENT_ID=${NODERED_GITHUB_CLIENT_ID}
+      - GITHUB_CLIENT_SECRET=${NODERED_GITHUB_CLIENT_SECRET}
     ports:
       - 1880:1880
     user: root:root
@@ -215,3 +219,16 @@ services:
     environment:
       ADDRESS: amongus.tigeroakes.com
       NAME: "Penguins"
+
+  jupyter:
+    image: jupyter/scipy-notebook
+    container_name: jupyter
+    environment:
+      JUPYTER_ENABLE_LAB: "yes"
+    volumes:
+      - /home/tiger/jupyter:/home/jovyan/work
+    ports:
+      - 8888:8888
+    command:
+      - start-notebook.sh
+      - --NotebookApp.token=''

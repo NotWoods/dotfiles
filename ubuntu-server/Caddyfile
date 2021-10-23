@@ -46,6 +46,11 @@ cellwall.tigeroakes.com {
   }
 }
 
+nodered.home.tigeroakes.com {
+  # Node-RED
+  reverse_proxy localhost:1880
+}
+
 amongus.tigeroakes.com {
   # CrewLink server
   reverse_proxy localhost:9736

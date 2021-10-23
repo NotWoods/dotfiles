@@ -1,0 +1,11 @@
+[Unit]
+Description=CellWall
+
+[Service]
+Type=simple
+Restart=always
+WorkingDirectory=/home/pi/cell-wall
+ExecStart=/usr/bin/node /home/pi/cell-wall/javascript/server/build/index.js
+
+[Install]
+WantedBy=multi-user.target
