@@ -4,6 +4,9 @@
 [core]
 	editor = code --wait
 	excludesfile = ~/.gitignore_global
+[alias]
+	amend = commit --amend --no-edit
+	edit = commit --amend --only
 [merge]
 	tool = vscode
 [mergetool "vscode"]
