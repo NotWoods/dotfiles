@@ -1,0 +1,16 @@
+:4000
+
+route /oauth2callback {
+	reverse_proxy localhost:3000
+}
+
+route /webhook {
+	# github.com/WingLim/caddy-webhook
+	webhook {
+		repo https://github.com/NotWoods/cell-wall.git
+		path /home/pi/cell-wall
+		branch pi-deploy
+		command node javascript/server/build/index.js
+		secret {env.CADDY_WEBHOOK_SECRET}
+	}
+}

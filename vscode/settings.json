@@ -1,42 +1,102 @@
 {
-    // Editor
-    "editor.fontFamily": "'Cascadia Code', Consolas, 'Courier New', monospace",
-    "editor.tabSize": 2,
-    "breadcrumbs.enabled": true,
+  // Editor
+  "editor.fontFamily": "'Cascadia Code', Consolas, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.stickyScroll.enabled": true,
+  "editor.foldingImportsByDefault": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "modifications",
 
-    // Files
-    "files.associations": {
-        ".gitignore_global": "ignore"
+  // Files
+  "files.associations": {
+    ".gitignore_global": "ignore",
+    "*.mdx": "mdx"
+  },
+  "files.exclude": {
+    "**/*.pyc": true
+  },
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "explorer.confirmDragAndDrop": false,
+
+  // Animation
+  "workbench.list.smoothScrolling": true,
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.smoothScrolling": true,
+
+  // Git
+  "git.allowForcePush": true,
+  "git.allowNoVerifyCommit": true,
+  "git.autofetch": true,
+  "git.autoStash": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+
+  // Terminal
+  "terminal.external.windowsExec": "C:\\Users\\tiger\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe",
+  "terminal.integrated.fontFamily": "'Cascadia Code PL', 'Cascadia Code', Consolas, 'Courier New', monospace",
+  "terminal.integrated.autoReplies": {
+    "Terminate batch job (Y/N)": "Y\r"
+  },
+  "terminal.integrated.shellIntegration.enabled": true,
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.smoothScrolling": true,
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell"
     },
-    "files.exclude": {
-        "**/*.pyc": true
-    },
-    "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true,
-    "explorer.confirmDragAndDrop": false,
+    "Command Prompt": null,
+    "Git Bash": null
+  },
 
-    // Animation
-    "workbench.list.smoothScrolling": true,
-    "editor.smoothScrolling": true,
-    "editor.cursorSmoothCaretAnimation": true,
-    "editor.cursorBlinking": "smooth",
-    "editor.fontLigatures": true,
+  // Search
+  "search.exclude": {
+    "**/yarn.lock": true,
+    "**/package-lock.json": true
+  },
 
-    // Git
-    "git.allowForcePush": true,
-    "git.allowNoVerifyCommit": true,
-    "git.autofetch": true,
-    "git.autoStash": true,
-    "git.enableSmartCommit": true,
-
-    // Terminal
-    "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
-    "telemetry.enableTelemetry": false,
-
-    // Search
-    "search.exclude": {
-        "**/yarn.lock": true,
-        "**/package-lock.json": true
-    },
+  // Linter
+  "eslint.rules.customizations": [{ "ruleId": "*", "severity": "downgrade" }],
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[svelte]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[astro]": {
+    "editor.foldingImportsByDefault": false,
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  },
+  "json.schemas": [
+    {
+      "fileMatch": ["**/*.webmanifest"],
+      "url": "https://json.schemastore.org/web-manifest"
+    }
+  ]
 }
